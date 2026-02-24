@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -36,8 +35,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {children}
-        <SpeedInsights />
+        {/* Navbar and Footer live HERE ONLY — never import them in individual page files */}
         <Navbar />
         <div style={{ minHeight: 'calc(100vh - 64px)' }}>
           {children}
