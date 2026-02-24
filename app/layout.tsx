@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
   title: 'SRI — Service Retirement Intelligence',
@@ -34,8 +35,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {children}
-        <Analytics />
+        <Navbar />
+        <div style={{ minHeight: 'calc(100vh - 64px)' }}>
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );
