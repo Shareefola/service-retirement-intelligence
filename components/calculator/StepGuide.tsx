@@ -15,11 +15,11 @@ const STEPS = [
   },
   {
     title: 'Research Fellow Override',
-    body: `If the employee is a Research Fellow, retirement is computed at the Research Fellow retirement age. This rule overrides all service limits absolutely — no exceptions.`,
+    body: 'If the employee is a Research Fellow, retirement is computed at the Research Fellow retirement age. This rule overrides all service limits absolutely — no exceptions.',
   },
   {
     title: 'Configure for Your Region',
-    body: 'Visit Settings to apply a country profile (Nigeria, UK, USA) or configure custom retirement ages, service caps, and cutoff dates for your institution's specific regulatory framework.',
+    body: "Visit Settings to apply a country profile (Nigeria, UK, USA) or configure custom retirement ages, service caps, and cutoff dates for your institution's specific regulatory framework.",
   },
 ];
 
