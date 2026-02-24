@@ -39,141 +39,73 @@ const FEATURES = [
 export default function HomePage() {
   return (
     <main style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
-      {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section
-        style={{
-          textAlign: 'center',
-          padding: '96px 0 72px',
-          borderBottom: '1px solid rgba(26,22,20,0.1)',
-          marginBottom: 72,
-        }}
-      >
-        <p
-          style={{
-            fontSize: 11,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: '#8C6D4F',
-            marginBottom: 20,
-            fontFamily: 'var(--font-mono)',
-          }}
-        >
+
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      <section style={{
+        textAlign: 'center',
+        padding: '96px 0 72px',
+        borderBottom: '1px solid rgba(26,22,20,0.1)',
+        marginBottom: 72,
+      }}>
+        <p style={{
+          fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
+          color: '#8C6D4F', marginBottom: 20, fontFamily: 'var(--font-mono)',
+        }}>
           Institutional Retirement Intelligence
         </p>
-        <h1
-          style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(42px, 7vw, 72px)',
-            lineHeight: 1.06,
-            letterSpacing: '-0.03em',
-            marginBottom: 24,
-            color: '#1A1614',
-          }}
-        >
-          Compute. Verify.
-          <br />
-          Retire with Precision.
+        <h1 style={{
+          fontFamily: 'var(--font-serif)',
+          fontSize: 'clamp(42px, 7vw, 72px)',
+          lineHeight: 1.06, letterSpacing: '-0.03em',
+          marginBottom: 24, color: '#1A1614',
+        }}>
+          Compute. Verify.<br />Retire with Precision.
         </h1>
-        <p
-          style={{
-            fontSize: 18,
-            color: '#5C4A3A',
-            maxWidth: 540,
-            margin: '0 auto 40px',
-            lineHeight: 1.65,
-            fontFamily: 'var(--font-body)',
-            fontStyle: 'italic',
-          }}
-        >
+        <p style={{
+          fontSize: 18, color: '#5C4A3A', maxWidth: 540,
+          margin: '0 auto 40px', lineHeight: 1.65,
+          fontFamily: 'var(--font-body)', fontStyle: 'italic',
+        }}>
           Exact calendar arithmetic for HR professionals and administrative
           institutions. Zero approximations. Institutional confidence.
         </p>
-        <Link
-          href="/calculator"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 8,
-            padding: '14px 32px',
-            background: '#1A1614',
-            color: '#F7F5F2',
-            borderRadius: 10,
-            fontSize: 15,
-            fontFamily: 'var(--font-body)',
-            textDecoration: 'none',
-            letterSpacing: '0.01em',
-          }}
-        >
+        <Link href="/calculator" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 8,
+          padding: '14px 32px', background: '#1A1614', color: '#F7F5F2',
+          borderRadius: 10, fontSize: 15, fontFamily: 'var(--font-body)',
+          textDecoration: 'none', letterSpacing: '0.01em',
+        }}>
           Begin Calculation <ArrowRight size={16} />
         </Link>
       </section>
 
       {/* ── How it works ─────────────────────────────────────────────────── */}
       <section style={{ marginBottom: 72 }}>
-        <p
-          style={{
-            fontSize: 11,
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            color: '#8C6D4F',
-            fontFamily: 'var(--font-mono)',
-            marginBottom: 32,
-          }}
-        >
+        <p style={{
+          fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase',
+          color: '#8C6D4F', fontFamily: 'var(--font-mono)', marginBottom: 32,
+        }}>
           How It Works
         </p>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: 1,
-            border: '1px solid rgba(26,22,20,0.1)',
-            borderRadius: 16,
-            overflow: 'hidden',
-            background: 'rgba(26,22,20,0.1)',
-          }}
-        >
+        <div style={{
+          display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: 1, border: '1px solid rgba(26,22,20,0.1)', borderRadius: 16,
+          overflow: 'hidden', background: 'rgba(26,22,20,0.1)',
+        }}>
           {[
             { n: '01', title: 'Enter Employee Data', sub: 'DOB, DOA, Fellow status' },
             { n: '02', title: 'Engine Computes', sub: 'Exact calendar arithmetic' },
             { n: '03', title: 'Results Returned', sub: 'Date, trigger, service' },
             { n: '04', title: 'Export or Print', sub: 'Professional PDF report' },
           ].map((step) => (
-            <div
-              key={step.n}
-              style={{
-                background: '#FAFAF9',
-                padding: '28px 24px',
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 11,
-                  fontFamily: 'var(--font-mono)',
-                  color: '#8C6D4F',
-                  marginBottom: 10,
-                  letterSpacing: '0.1em',
-                }}
-              >
+            <div key={step.n} style={{ background: '#FAFAF9', padding: '28px 24px' }}>
+              <div style={{ fontSize: 11, fontFamily: 'var(--font-mono)', color: '#8C6D4F', marginBottom: 10, letterSpacing: '0.1em' }}>
                 {step.n}
               </div>
-              <div
-                style={{
-                  fontSize: 17,
-                  fontFamily: 'var(--font-serif)',
-                  color: '#1A1614',
-                  marginBottom: 4,
-                }}
-              >
+              <div style={{ fontSize: 17, fontFamily: 'var(--font-serif)', color: '#1A1614', marginBottom: 4 }}>
                 {step.title}
               </div>
-              <div
-                style={{
-                  fontSize: 13,
-                  color: '#8C6D4F',
-                  fontFamily: 'var(--font-mono)',
-                }}
-              >
+              <div style={{ fontSize: 13, color: '#8C6D4F', fontFamily: 'var(--font-mono)' }}>
                 {step.sub}
               </div>
             </div>
@@ -183,25 +115,13 @@ export default function HomePage() {
 
       {/* ── Feature grid ─────────────────────────────────────────────────── */}
       <section style={{ marginBottom: 80 }}>
-        <p
-          style={{
-            fontSize: 11,
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            color: '#8C6D4F',
-            fontFamily: 'var(--font-mono)',
-            marginBottom: 32,
-          }}
-        >
+        <p style={{
+          fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase',
+          color: '#8C6D4F', fontFamily: 'var(--font-mono)', marginBottom: 32,
+        }}>
           Platform Capabilities
         </p>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: 20,
-          }}
-        >
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
           {FEATURES.map(({ icon: Icon, title, text }) => (
             <FeatureCard key={title} icon={<Icon size={20} />} title={title} text={text} />
           ))}
@@ -209,133 +129,66 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────────────────── */}
-      <section
-        style={{
-          background: '#1A1614',
-          borderRadius: 20,
-          padding: '56px 48px',
-          textAlign: 'center',
-          marginBottom: 0,
-        }}
-      >
-        <p
-          style={{
-            fontSize: 11,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: '#8C6D4F',
-            fontFamily: 'var(--font-mono)',
-            marginBottom: 16,
-          }}
-        >
+      <section style={{
+        background: '#1A1614', borderRadius: 20,
+        padding: '56px 48px', textAlign: 'center',
+      }}>
+        <p style={{
+          fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
+          color: '#8C6D4F', fontFamily: 'var(--font-mono)', marginBottom: 16,
+        }}>
           Ready to compute
         </p>
-        <h2
-          style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: 36,
-            color: '#F7F5F2',
-            letterSpacing: '-0.02em',
-            marginBottom: 16,
-          }}
-        >
+        <h2 style={{
+          fontFamily: 'var(--font-serif)', fontSize: 36, color: '#F7F5F2',
+          letterSpacing: '-0.02em', marginBottom: 16,
+        }}>
           Eliminate Administrative Uncertainty
         </h2>
-        <p
-          style={{
-            fontSize: 16,
-            color: '#B8A898',
-            fontFamily: 'var(--font-body)',
-            fontStyle: 'italic',
-            maxWidth: 440,
-            margin: '0 auto 32px',
-          }}
-        >
+        <p style={{
+          fontSize: 16, color: '#B8A898', fontFamily: 'var(--font-body)',
+          fontStyle: 'italic', maxWidth: 440, margin: '0 auto 32px',
+        }}>
           One tool. Exact results. Institutional confidence.
         </p>
-        <Link
-          href="/calculator"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 8,
-            padding: '14px 32px',
-            background: '#F7F5F2',
-            color: '#1A1614',
-            borderRadius: 10,
-            fontSize: 15,
-            fontFamily: 'var(--font-body)',
-            textDecoration: 'none',
-          }}
-        >
+        <Link href="/calculator" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 8,
+          padding: '14px 32px', background: '#F7F5F2', color: '#1A1614',
+          borderRadius: 10, fontSize: 15, fontFamily: 'var(--font-body)', textDecoration: 'none',
+        }}>
           Open Calculator <ArrowRight size={16} />
         </Link>
       </section>
+
     </main>
   );
 }
 
-// ── Extracted as inline component to keep hover state clean ──────────────────
-function FeatureCard({
-  icon,
-  title,
-  text,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  text: string;
-}) {
+function FeatureCard({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return (
     <div
       className="card"
-      style={{
-        padding: 28,
-        transition: 'transform 0.2s, box-shadow 0.2s',
-        cursor: 'default',
-      }}
+      style={{ padding: 28, transition: 'transform 0.2s, box-shadow 0.2s', cursor: 'default' }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'translateY(-2px)';
         e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow =
-          '0 1px 4px rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.04)';
+        e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.04)';
       }}
     >
-      <div
-        style={{
-          width: 44,
-          height: 44,
-          background: '#F0EBE5',
-          borderRadius: 12,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginBottom: 16,
-          color: '#8C6D4F',
-        }}
-      >
+      <div style={{
+        width: 44, height: 44, background: '#F0EBE5', borderRadius: 12,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        marginBottom: 16, color: '#8C6D4F',
+      }}>
         {icon}
       </div>
-      <h3
-        style={{
-          fontSize: 16,
-          fontFamily: 'var(--font-serif)',
-          marginBottom: 8,
-          color: '#1A1614',
-        }}
-      >
+      <h3 style={{ fontSize: 16, fontFamily: 'var(--font-serif)', marginBottom: 8, color: '#1A1614' }}>
         {title}
       </h3>
-      <p
-        style={{
-          fontSize: 14,
-          color: '#5C4A3A',
-          lineHeight: 1.65,
-          fontFamily: 'var(--font-body)',
-        }}
-      >
+      <p style={{ fontSize: 14, color: '#5C4A3A', lineHeight: 1.65, fontFamily: 'var(--font-body)' }}>
         {text}
       </p>
     </div>
