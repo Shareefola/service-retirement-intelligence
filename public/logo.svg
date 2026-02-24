@@ -1,0 +1,14 @@
+<svg width="192" height="80" viewBox="0 0 192 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- SRI Logotype -->
+  <text
+    x="8"
+    y="64"
+    font-family="Georgia, serif"
+    font-size="72"
+    font-weight="700"
+    fill="#1A1614"
+    letter-spacing="-3"
+  >SRI</text>
+  <!-- Baseline rule -->
+  <rect x="8" y="74" width="176" height="2.5" fill="#1A1614" opacity="0.2" rx="1.25"/>
+</svg>
