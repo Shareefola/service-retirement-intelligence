@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import RetirementForm from '@/components/calculator/RetirementForm';
 import ResultsPanel from '@/components/calculator/ResultsPanel';
 import StepGuide from '@/components/calculator/StepGuide';
@@ -11,8 +11,21 @@ import type { CalculatorFormValues } from '@/lib/validation';
 
 export default function CalculatorPage() {
   const { settings } = useSettingsStore();
+
+  // Start as false — never show guide until we've confirmed hydration
+  const [showGuide, setShowGuide] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   const [result, setResult] = useState<RetirementResult | null>(null);
-  const [showGuide, setShowGuide] = useState(!settings.hasSeenOnboarding);
+
+  // Only runs on the client, after localStorage has been rehydrated into Zustand
+  useEffect(() => {
+    setHydrated(true);
+    if (!settings.hasSeenOnboarding) {
+      setShowGuide(true);
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  // Empty deps is intentional — we only want this to run once on mount,
+  // after which Zustand is guaranteed to have read from localStorage.
 
   const handleCompute = (values: CalculatorFormValues) => {
     const dob = parseDateSafe(values.dob)!;
@@ -21,9 +34,10 @@ export default function CalculatorPage() {
       retirementAge: settings.retirementAge,
       serviceCap: settings.serviceCap,
       researchFellowAge: settings.researchFellowAge,
-      cutoffDate: settings.cutoffDate instanceof Date
-        ? settings.cutoffDate
-        : new Date(settings.cutoffDateString + 'T00:00:00'),
+      cutoffDate:
+        settings.cutoffDate instanceof Date
+          ? settings.cutoffDate
+          : new Date(settings.cutoffDateString + 'T00:00:00'),
     };
     const computed = computeRetirement(dob, doa, values.isResearchFellow, config);
     setResult(computed);
@@ -31,7 +45,10 @@ export default function CalculatorPage() {
 
   return (
     <main style={{ maxWidth: 1200, margin: '0 auto', padding: '48px 24px' }}>
-      <StepGuide open={showGuide} onClose={() => setShowGuide(false)} />
+      {/* Guide only mounts after hydration — prevents flash on every refresh */}
+      {hydrated && (
+        <StepGuide open={showGuide} onClose={() => setShowGuide(false)} />
+      )}
 
       <div style={{ marginBottom: 40 }}>
         <p
@@ -87,7 +104,7 @@ export default function CalculatorPage() {
         </div>
       </div>
 
-      {/* Help strip */}
+      {/* Settings nudge */}
       <div
         style={{
           marginTop: 24,
