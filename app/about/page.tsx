@@ -5,9 +5,9 @@ export const metadata: Metadata = {
 };
 
 const SPECS = [
-  ['Framework', 'Next.js 14 (App Router, RSC)'],
+  ['Framework', 'Next.js 15 (App Router, RSC)'],
   ['Language', 'TypeScript — strict mode'],
-  ['Date Engine', 'date-fns v3 · Exact calendar arithmetic'],
+  ['Date Engine', 'date-fns v4 · Exact calendar arithmetic'],
   ['State Management', 'Zustand with localStorage persistence'],
   ['Form Validation', 'React Hook Form + Zod schemas'],
   ['PDF Generation', 'jsPDF — client-side rendering'],
@@ -19,39 +19,22 @@ const SPECS = [
 
 export default function AboutPage() {
   return (
-    <main
-      style={{
-        maxWidth: 760,
-        margin: '0 auto',
-        padding: '48px 24px 80px',
-      }}
-    >
+    <main style={{ maxWidth: 760, margin: '0 auto', padding: '48px 24px 80px' }}>
+
       {/* Header */}
       <div style={{ marginBottom: 52 }}>
-        <p
-          style={{
-            fontSize: 11,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: '#8C6D4F',
-            fontFamily: 'var(--font-mono)',
-            marginBottom: 16,
-          }}
-        >
+        <p style={{
+          fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
+          color: '#8C6D4F', fontFamily: 'var(--font-mono)', marginBottom: 16,
+        }}>
           About the Platform
         </p>
-        <h1
-          style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(34px, 5vw, 52px)',
-            letterSpacing: '-0.03em',
-            color: '#1A1614',
-            lineHeight: 1.1,
-          }}
-        >
-          Service Retirement
-          <br />
-          Intelligence
+        <h1 style={{
+          fontFamily: 'var(--font-serif)',
+          fontSize: 'clamp(34px, 5vw, 52px)',
+          letterSpacing: '-0.03em', color: '#1A1614', lineHeight: 1.1,
+        }}>
+          Service Retirement<br />Intelligence
         </h1>
       </div>
 
@@ -83,85 +66,44 @@ All parameters — retirement age, service cap, Research Fellow retirement age, 
         },
       ].map((section) => (
         <section key={section.label} style={{ marginBottom: 44 }}>
-          <p
-            style={{
-              fontSize: 11,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: '#8C6D4F',
-              fontFamily: 'var(--font-mono)',
-              marginBottom: 16,
-            }}
-          >
+          <p style={{
+            fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
+            color: '#8C6D4F', fontFamily: 'var(--font-mono)', marginBottom: 16,
+          }}>
             {section.label}
           </p>
           {section.body.split('\n\n').map((para, i) => (
-            <p
-              key={i}
-              style={{
-                fontSize: 16,
-                lineHeight: 1.82,
-                color: '#2C2420',
-                fontFamily: 'var(--font-body)',
-                marginBottom: 18,
-              }}
-            >
+            <p key={i} style={{
+              fontSize: 16, lineHeight: 1.82, color: '#2C2420',
+              fontFamily: 'var(--font-body)', marginBottom: 18,
+            }}>
               {para}
             </p>
           ))}
         </section>
       ))}
 
-      <hr
-        style={{
-          border: 'none',
-          borderTop: '1px solid rgba(26,22,20,0.1)',
-          margin: '44px 0',
-        }}
-      />
+      <hr style={{ border: 'none', borderTop: '1px solid rgba(26,22,20,0.1)', margin: '44px 0' }} />
 
       {/* Technical specifications */}
       <section>
-        <p
-          style={{
-            fontSize: 11,
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            color: '#8C6D4F',
-            fontFamily: 'var(--font-mono)',
-            marginBottom: 20,
-          }}
-        >
+        <p style={{
+          fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
+          color: '#8C6D4F', fontFamily: 'var(--font-mono)', marginBottom: 20,
+        }}>
           Technical Specification
         </p>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <tbody>
             {SPECS.map(([key, val]) => (
-              <tr
-                key={key}
-                style={{ borderBottom: '1px solid rgba(26,22,20,0.07)' }}
-              >
-                <td
-                  style={{
-                    padding: '11px 0',
-                    fontSize: 12,
-                    fontFamily: 'var(--font-mono)',
-                    color: '#8C6D4F',
-                    letterSpacing: '0.06em',
-                    width: '38%',
-                    verticalAlign: 'top',
-                  }}
-                >
+              <tr key={key} style={{ borderBottom: '1px solid rgba(26,22,20,0.07)' }}>
+                <td style={{
+                  padding: '11px 0', fontSize: 12, fontFamily: 'var(--font-mono)',
+                  color: '#8C6D4F', letterSpacing: '0.06em', width: '38%', verticalAlign: 'top',
+                }}>
                   {key}
                 </td>
-                <td
-                  style={{
-                    padding: '11px 0 11px 16px',
-                    fontSize: 14,
-                    fontFamily: 'var(--font-body)',
-                    color: '#1A1614',
-                  }}
-                >
+                <td style={{ padding: '11px 0 11px 16px', fontSize: 14, fontFamily: 'var(--font-body)', color: '#1A1614' }}>
                   {val}
                 </td>
               </tr>
@@ -171,37 +113,17 @@ All parameters — retirement age, service cap, Research Fellow retirement age, 
       </section>
 
       {/* Closing quote */}
-      <div
-        style={{
-          background: '#1A1614',
-          borderRadius: 16,
-          padding: '32px 36px',
-          marginTop: 52,
-        }}
-      >
-        <p
-          style={{
-            fontSize: 11,
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            color: '#8C6D4F',
-            fontFamily: 'var(--font-mono)',
-            marginBottom: 14,
-          }}
-        >
+      <div style={{ background: '#1A1614', borderRadius: 16, padding: '32px 36px', marginTop: 52 }}>
+        <p style={{
+          fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase',
+          color: '#8C6D4F', fontFamily: 'var(--font-mono)', marginBottom: 14,
+        }}>
           Institutional Purpose
         </p>
-        <blockquote
-          style={{
-            fontSize: 16,
-            color: '#D4C8BC',
-            lineHeight: 1.82,
-            fontFamily: 'var(--font-body)',
-            fontStyle: 'italic',
-            margin: 0,
-            borderLeft: 'none',
-          }}
-        >
+        <blockquote style={{
+          fontSize: 16, color: '#D4C8BC', lineHeight: 1.82,
+          fontFamily: 'var(--font-body)', fontStyle: 'italic', margin: 0,
+        }}>
           "The objective is to deliver a precise, configurable, and globally
           adaptable retirement computation platform for HR professionals,
           administrative units, and institutional systems worldwide —
@@ -209,6 +131,7 @@ All parameters — retirement age, service cap, Research Fellow retirement age, 
           service administration."
         </blockquote>
       </div>
+
     </main>
   );
 }
