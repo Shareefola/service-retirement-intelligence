@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowRight, Calendar, Shield, TrendingUp, Clock, Settings, Download } from 'lucide-react';
 
@@ -100,7 +102,6 @@ export default function HomePage() {
             fontFamily: 'var(--font-body)',
             textDecoration: 'none',
             letterSpacing: '0.01em',
-            transition: 'opacity 0.2s',
           }}
         >
           Begin Calculation <ArrowRight size={16} />
@@ -202,60 +203,7 @@ export default function HomePage() {
           }}
         >
           {FEATURES.map(({ icon: Icon, title, text }) => (
-            <div
-              key={title}
-              className="card"
-              style={{
-                padding: 28,
-                transition: 'transform 0.2s, box-shadow 0.2s',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow =
-                  '0 4px 20px rgba(0,0,0,0.08)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow =
-                  '0 1px 4px rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.04)';
-              }}
-            >
-              <div
-                style={{
-                  width: 44,
-                  height: 44,
-                  background: '#F0EBE5',
-                  borderRadius: 12,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: 16,
-                  color: '#8C6D4F',
-                }}
-              >
-                <Icon size={20} />
-              </div>
-              <h3
-                style={{
-                  fontSize: 16,
-                  fontFamily: 'var(--font-serif)',
-                  marginBottom: 8,
-                  color: '#1A1614',
-                }}
-              >
-                {title}
-              </h3>
-              <p
-                style={{
-                  fontSize: 14,
-                  color: '#5C4A3A',
-                  lineHeight: 1.65,
-                  fontFamily: 'var(--font-body)',
-                }}
-              >
-                {text}
-              </p>
-            </div>
+            <FeatureCard key={title} icon={<Icon size={20} />} title={title} text={text} />
           ))}
         </div>
       </section>
@@ -324,5 +272,72 @@ export default function HomePage() {
         </Link>
       </section>
     </main>
+  );
+}
+
+// ── Extracted as inline component to keep hover state clean ──────────────────
+function FeatureCard({
+  icon,
+  title,
+  text,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  text: string;
+}) {
+  return (
+    <div
+      className="card"
+      style={{
+        padding: 28,
+        transition: 'transform 0.2s, box-shadow 0.2s',
+        cursor: 'default',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translateY(-2px)';
+        e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.boxShadow =
+          '0 1px 4px rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.04)';
+      }}
+    >
+      <div
+        style={{
+          width: 44,
+          height: 44,
+          background: '#F0EBE5',
+          borderRadius: 12,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: 16,
+          color: '#8C6D4F',
+        }}
+      >
+        {icon}
+      </div>
+      <h3
+        style={{
+          fontSize: 16,
+          fontFamily: 'var(--font-serif)',
+          marginBottom: 8,
+          color: '#1A1614',
+        }}
+      >
+        {title}
+      </h3>
+      <p
+        style={{
+          fontSize: 14,
+          color: '#5C4A3A',
+          lineHeight: 1.65,
+          fontFamily: 'var(--font-body)',
+        }}
+      >
+        {text}
+      </p>
+    </div>
   );
 }
