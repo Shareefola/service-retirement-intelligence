@@ -11,21 +11,16 @@ import type { CalculatorFormValues } from '@/lib/validation';
 
 export default function CalculatorPage() {
   const { settings } = useSettingsStore();
-
-  // Start as false — never show guide until we've confirmed hydration
   const [showGuide, setShowGuide] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [result, setResult] = useState<RetirementResult | null>(null);
 
-  // Only runs on the client, after localStorage has been rehydrated into Zustand
   useEffect(() => {
     setHydrated(true);
     if (!settings.hasSeenOnboarding) {
       setShowGuide(true);
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  // Empty deps is intentional — we only want this to run once on mount,
-  // after which Zustand is guaranteed to have read from localStorage.
 
   const handleCompute = (values: CalculatorFormValues) => {
     const dob = parseDateSafe(values.dob)!;
@@ -45,102 +40,60 @@ export default function CalculatorPage() {
 
   return (
     <main style={{ maxWidth: 1200, margin: '0 auto', padding: '48px 24px' }}>
-      {/* Guide only mounts after hydration — prevents flash on every refresh */}
+
       {hydrated && (
         <StepGuide open={showGuide} onClose={() => setShowGuide(false)} />
       )}
 
       <div style={{ marginBottom: 40 }}>
-        <p
-          style={{
-            fontSize: 11,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: '#8C6D4F',
-            fontFamily: 'var(--font-mono)',
-            marginBottom: 12,
-          }}
-        >
+        <p style={{
+          fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
+          color: '#8C6D4F', fontFamily: 'var(--font-mono)', marginBottom: 12,
+        }}>
           Retirement Computation
         </p>
-        <h1
-          style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(28px, 4vw, 42px)',
-            letterSpacing: '-0.02em',
-            color: '#1A1614',
-            marginBottom: 4,
-          }}
-        >
+        <h1 style={{
+          fontFamily: 'var(--font-serif)',
+          fontSize: 'clamp(28px, 4vw, 42px)',
+          letterSpacing: '-0.02em', color: '#1A1614', marginBottom: 4,
+        }}>
           Retirement Calculator
         </h1>
-        <p
-          style={{
-            fontSize: 15,
-            color: '#8C6D4F',
-            fontFamily: 'var(--font-mono)',
-          }}
-        >
+        <p style={{ fontSize: 15, color: '#8C6D4F', fontFamily: 'var(--font-mono)' }}>
           Exact calendar arithmetic — no approximations
         </p>
       </div>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-          gap: 32,
-          alignItems: 'start',
-        }}
-      >
-        {/* Form */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+        gap: 32, alignItems: 'start',
+      }}>
         <div className="card" style={{ padding: 36 }}>
           <RetirementForm onCompute={handleCompute} />
         </div>
-
-        {/* Results */}
         <div className="card" style={{ padding: 36, minHeight: 360 }}>
           <ResultsPanel result={result} />
         </div>
       </div>
 
-      {/* Settings nudge */}
-      <div
-        style={{
-          marginTop: 24,
-          padding: '14px 18px',
-          background: '#F7F5F2',
-          borderRadius: 10,
-          border: '1px solid rgba(26,22,20,0.08)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: 10,
-        }}
-      >
-        <p
-          style={{
-            fontSize: 13,
-            color: '#8C6D4F',
-            fontFamily: 'var(--font-mono)',
-          }}
-        >
+      <div style={{
+        marginTop: 24, padding: '14px 18px', background: '#F7F5F2',
+        borderRadius: 10, border: '1px solid rgba(26,22,20,0.08)',
+        display: 'flex', alignItems: 'center',
+        justifyContent: 'space-between', flexWrap: 'wrap', gap: 10,
+      }}>
+        <p style={{ fontSize: 13, color: '#8C6D4F', fontFamily: 'var(--font-mono)' }}>
           Need to adjust retirement ages or service caps?
         </p>
-        <a
-          href="/settings"
-          style={{
-            fontSize: 13,
-            color: '#1A1614',
-            fontFamily: 'var(--font-mono)',
-            textDecoration: 'underline',
-            textUnderlineOffset: 3,
-          }}
-        >
+        <a href="/settings" style={{
+          fontSize: 13, color: '#1A1614', fontFamily: 'var(--font-mono)',
+          textDecoration: 'underline', textUnderlineOffset: 3,
+        }}>
           Open Settings →
         </a>
       </div>
+
     </main>
   );
 }
